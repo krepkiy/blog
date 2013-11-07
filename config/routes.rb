@@ -1,13 +1,6 @@
 Blog::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
-  get "users/new"
-  resources :posts
+  #resources :posts
   resources :users
-
-  root to: 'static_pages#home'
-
-  get '/signup',  to: 'users#new'
 
   root to: 'static_pages#home'
 
