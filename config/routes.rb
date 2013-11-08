@@ -1,11 +1,19 @@
 Blog::Application.routes.draw do
-  #resources :posts
-  resources :users
-  resources :static_pages
+  get "users/new"
 
   root to: 'static_pages#home'
 
-  get '/signup',  to: 'users#new'
+  match '/signup',  to: 'users#new'
+
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+  #resources :posts
+  #resources :users
+
+  #root to: 'static_pages#home'
+
+  #get '/signup',  to: 'users#new'
 
   #get '/help',    to: 'static_pages#help'
   #get '/about',   to: 'static_pages#about'
