@@ -2,16 +2,20 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
+  has_many :posts, dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
